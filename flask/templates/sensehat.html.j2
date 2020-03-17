@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT - SenseHat</title>
+    <style>
+    #senseEmulator { 
+        width: 300px; 
+        height: 300px; 
+        background-color: black;
+    }
+    </style>
+</head>
+<body>
+{% if sense_values %}
+    <h1>Change the color of the sensehat</h1>
+    <div id="senseEmulator" style="background-color: {{ sense_values['value'] }};"></div>
+    <form action="sensehat" method="post" class="form">
+        <input type="color" name="senseColor" id="senseColor" value="{{ sense_values['value'] }}">
+        <button type="submit">Change Color</button>
+    </form>
+
+    <form action="sensetext" method="post" class="form">
+        <input type="text" name="textDisplay" id="textDisplay">
+        <button type="submit">Change text</button>
+    </form>
+{% else %}
+    <p>Geen data</p>
+{% endif %}
+
+</body>
+</html>
